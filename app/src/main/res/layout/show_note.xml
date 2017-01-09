@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/show_note"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.note.pankajpc.note.ShowNote">
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:padding="8dp"
+        android:enabled="false"
+        android:fontFamily="casual"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:background="@color/colorgrey"
+        android:maxLength="20"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:id="@+id/noteTitle"
+        android:textStyle="normal|bold" />
+
+    <EditText
+        android:layout_width="160dp"
+        android:padding="4dp"
+        android:enabled="false"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:textColor="#000000"
+        android:id="@+id/noteDateTime"
+        android:background="@android:color/transparent"
+        android:textSize="12sp"
+        android:layout_below="@+id/noteTitle"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+         />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:padding="4dp"
+        android:enabled="false"
+        android:inputType="textMultiLine"
+        android:text="fffffffffffffffff"
+        android:fontFamily="casual"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:textColor="#000000"
+        android:overScrollMode="always"
+        android:gravity="start"
+        android:layout_below="@id/noteDateTime"
+        android:ems="10"
+        android:id="@+id/noteDescription"
+        android:background="@android:color/transparent"
+       />
+
+    <ImageButton
+        android:id="@+id/options"
+        android:layout_width="wrap_content"
+        android:padding="8dp"
+        android:layout_height="47dp"
+        android:src="@drawable/ic_option"
+        android:background="@drawable/editbutton_selector"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:padding="8dp"
+        android:layout_height="47dp"
+        android:src="@drawable/ic_save"
+        android:background="@drawable/editbutton_selector"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/options"
+        android:layout_toStartOf="@+id/options" />
+
+    <ImageButton
+        android:id="@+id/editButton"
+        android:layout_width="wrap_content"
+        android:padding="8dp"
+        android:layout_height="47dp"
+        android:src="@drawable/ic_edit"
+        android:background="@drawable/editbutton_selector"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/saveButton"
+        android:layout_toStartOf="@+id/saveButton" />
+
+
+</RelativeLayout>

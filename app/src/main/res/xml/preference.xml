@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Note Settings">
+        <ListPreference
+            android:key="pref_font_size"
+            android:title="Editor Font Size"
+            android:summary="%s"
+            android:defaultValue="20"
+            android:entryValues="@array/store_font"
+            android:entries="@array/select_font" />
+        <ListPreference
+        android:key="pref_back_color"
+        android:title="Editor Background"
+        android:summary="%s"
+        android:defaultValue="#00000000"
+        android:entryValues="@array/store_background"
+        android:entries="@array/select_background" />
+        <ListPreference
+            android:key="pref_sort_order"
+            android:title="Default Order By"
+            android:summary="%s"
+            android:defaultValue="mNoteDateTime"
+            android:entryValues="@array/store_order"
+            android:entries="@array/select_order" />
+    </PreferenceCategory>
+</PreferenceScreen>

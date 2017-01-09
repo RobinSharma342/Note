@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Note</string>
+    <string-array name="navigation_list">
+        <item>Notes</item>
+        <item>Setting</item>
+        <item>Help</item>
+
+    </string-array>
+
+    <string-array name="select_frequency">
+        <item>One Time</item>
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+
+
+    </string-array>
+    <string-array name="select_font">
+    <item>Small</item>
+    <item>Medium</item>
+    <item>Large</item>
+
+</string-array>
+    <string-array name="store_font">
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+    </string-array>
+
+    <string-array name="select_background">
+        <item>White</item>
+        <item>Pink</item>
+        <item>Spring Rain Blue</item>
+        <item>Mint</item>
+        <item>Orange</item>
+    </string-array>
+    <string-array name="store_background">
+        <item>#00000000</item>
+        <item>#fedcf1</item>
+        <item>#9bce9c</item>
+        <item>#C3F4E5</item>
+        <item>#eaaa00</item>
+    </string-array>
+    <string-array name="select_order">
+        <item>Date Created</item>
+        <item>Alphabetically</item>
+        <item>Priority</item>
+    </string-array>
+    <string-array name="store_order">
+        <item>mNoteDateTime</item>
+        <item>mNoteTitle</item>
+        <item>mNotePriority</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>

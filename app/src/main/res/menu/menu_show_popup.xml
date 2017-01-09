@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/actionSend"
+        android:icon="@drawable/ic_action_send"
+        android:title="Send"/>
+    <item android:title="Set Priority" >
+        <menu>
+            <item
+                android:id="@+id/actionLowPriority"
+                android:title="Low"/>
+            <item
+                android:id="@+id/actionMediumPriority"
+                android:title="Medium"/>
+            <item
+                android:id="@+id/actionHighPriority"
+                android:title="High"/>
+        </menu>
+    </item>
+    </menu>
+
