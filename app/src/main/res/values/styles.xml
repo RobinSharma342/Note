@@ -6,6 +6,11 @@
         <item name="colorPrimary">#607D8B</item>
         <item name="colorPrimaryDark">#455A64</item>
         <item name="colorAccent">#9E9E9E</item>
+        <item name ="android:contextPopupMenuStyle">@style/PopUpTheme</item>
+    </style>
+    <style name="PopUpTheme" parent="@android:style/Widget.PopupMenu">
+        <!-- Customize your theme here. -->
+        <item name="android:popupBackground">@android:color/holo_green_light</item>
     </style>
     <style name="Theme.UserDialog" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:windowFrame">@null</item>

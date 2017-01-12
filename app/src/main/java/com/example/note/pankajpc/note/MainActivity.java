@@ -5,7 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +24,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -109,6 +112,9 @@ public class MainActivity extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                         break;
+                    case "Search":
+                        mSearchView.onActionViewExpanded();
+                        break;
                 }
 
 
@@ -122,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
         mDrawerItem.add(new DrawerItem("Notes",R.drawable.ic_notes));
         mDrawerItem.add(new DrawerItem("Add a Note",R.drawable.ic_add));
         mDrawerItem.add(new DrawerItem("Search",R.drawable.ic_search));
-        mDrawerItem.add(new DrawerItem("Trash",R.drawable.ic_trash));
         mDrawerItem.add(new DrawerItem("Settings",R.drawable.ic_settings));
     }
 
@@ -219,20 +224,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        resetSearchView();
+        if (!mSearchView.isIconified()) {
+            mSearchView.onActionViewCollapsed();
+        }
     }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        resetSearchView();
-    }
-
-    private void resetSearchView() {
-        mSearchView.clearFocus();
-        mSearchView.setQuery("", false);
-        mSearchView.setFocusable(false);
-        mSearchView.onActionViewCollapsed();
+        if (!mSearchView.isIconified()) {
+            mSearchView.onActionViewCollapsed();
+        } else {
+            super.onBackPressed();
+        }
     }
 
 

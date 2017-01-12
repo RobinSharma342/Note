@@ -3,6 +3,10 @@ package com.example.note.pankajpc.note;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Vibrator;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -190,15 +194,13 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
             MenuItem menuItem = contextMenu.add("Delete Note");
             MenuItem menuItem1 = contextMenu.add("Send Note");
             MenuItem menuItem2 = contextMenu.add("Show Note");
-            MenuItem menuItem3 = contextMenu.add("Set Priority");
-            MenuItem menuItem4 = contextMenu.add("Set Reminder");
+            MenuItem menuItem3 = contextMenu.add("Set Reminder");
             contextMenu.setHeaderTitle(mResults.get(position1).getmNoteTitle());
 
             menuItem.setOnMenuItemClickListener(onMenuItemClickListener);
             menuItem1.setOnMenuItemClickListener(onMenuItemClickListener);
             menuItem2.setOnMenuItemClickListener(onMenuItemClickListener);
             menuItem3.setOnMenuItemClickListener(onMenuItemClickListener);
-            menuItem4.setOnMenuItemClickListener(onMenuItemClickListener);
 
 
 

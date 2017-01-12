@@ -1,5 +1,6 @@
 package com.example.note.pankajpc.note;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -30,7 +31,6 @@ public class ShowNote extends AppCompatActivity {
     Realm realm;
     NoteModel nm;
     RelativeLayout mShowNote;
-    RealmResults<NoteModel> realmResults;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class ShowNote extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
         Realm.init(this);
-       // new SharedPreferenceCommon(this);
+        new SharedPreferenceCommon(this);
         realm = Realm.getDefaultInstance();
 
 
@@ -58,7 +58,6 @@ public class ShowNote extends AppCompatActivity {
         title=getIntent().getStringExtra("title");
         description=getIntent().getStringExtra("description");
         timestamp=getIntent().getStringExtra("timestamp");
-        Log.i("timestamp","timestamp");
         priority=getIntent().getIntExtra("priority",0);
         changedPriority=priority;
 
@@ -92,7 +91,7 @@ public class ShowNote extends AppCompatActivity {
                     mnoteTitle.setSelection(mnoteTitle.length());
                     mNoteDescription.setEnabled(true);
                     InputMethodManager inputMethodManager =
-                            (InputMethodManager)getSystemService(ShowNote.this.INPUT_METHOD_SERVICE);
+                            (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
                     inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
                     break;
                 case R.id.saveButton:
