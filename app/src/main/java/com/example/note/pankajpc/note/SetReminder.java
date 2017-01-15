@@ -123,7 +123,7 @@ public class SetReminder extends AppCompatActivity implements DatePickerDialog.O
 
                     }
                     else if(frequencyType.equalsIgnoreCase("Weekly")){
-                        am.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),604810000L,pendingintent);
+                        am.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),604800000L,pendingintent);
 
                     }
                     else if(frequencyType.equalsIgnoreCase("Monthly")){
