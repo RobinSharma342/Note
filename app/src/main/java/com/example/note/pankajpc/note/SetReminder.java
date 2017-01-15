@@ -127,7 +127,7 @@ public class SetReminder extends AppCompatActivity implements DatePickerDialog.O
 
                     }
                     else if(frequencyType.equalsIgnoreCase("Monthly")){
-                        am.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingintent);
+                        am.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),2592000000L,pendingintent);
                     }
 
                     //saving timestamp with request code
