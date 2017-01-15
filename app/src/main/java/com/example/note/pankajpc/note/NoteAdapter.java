@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -121,7 +122,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         }
         SimpleDateFormat postFormater = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
         String newDateStr = postFormater.format(dateObj);
-        holder.mDateTime.setText(newDateStr);
+        holder.mDateTime.setText(newDateStr.substring(5,11));
         int priority = mResults.get(position).getmNotePriority();
         if (priority==1 || priority==0)
         {
