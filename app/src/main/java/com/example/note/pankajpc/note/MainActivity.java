@@ -16,6 +16,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +27,10 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import io.realm.Case;
@@ -151,8 +155,6 @@ public class MainActivity extends AppCompatActivity {
            @Override
            public void onChange(RealmResults<NoteModel> element) {
                mNoteAdapter.update(mResults);
-
-
            }
        });
    }
@@ -171,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity((new Intent(context1,AddNote.class)).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP));
                 break;
             case R.id.dateCreated:
-                mResults = mRealm.where(NoteModel.class).findAllSorted("mNoteDateTime");
+                mResults = mRealm.where(NoteModel.class).findAllSorted("mNoteDateTime",Sort.DESCENDING);
                 mNoteAdapter.update(mResults);
                 break;
             case R.id.alphabetically:

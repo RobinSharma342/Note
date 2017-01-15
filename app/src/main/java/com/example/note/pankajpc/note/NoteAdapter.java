@@ -16,6 +16,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -108,7 +112,16 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.mTitle.setText(mResults.get(position).getmNoteTitle());
-        holder.mDateTime.setText(mResults.get(position).getmNoteDateTime().substring(0,6));
+        SimpleDateFormat curFormater = new SimpleDateFormat("yyMMddHHmmssZ");
+        Date dateObj = null;
+        try {
+            dateObj = curFormater.parse(mResults.get(position).getmNoteDateTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        SimpleDateFormat postFormater = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
+        String newDateStr = postFormater.format(dateObj);
+        holder.mDateTime.setText(newDateStr);
         int priority = mResults.get(position).getmNotePriority();
         if (priority==1 || priority==0)
         {

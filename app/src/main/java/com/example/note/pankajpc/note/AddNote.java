@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class AddNote extends AppCompatActivity {
@@ -57,7 +59,10 @@ public class AddNote extends AppCompatActivity {
             case R.id.note_save:
                 title = mNoteTitle.getText().toString();
                 description = mNoteDescription.getText().toString();
-                time = DateFormat.getDateTimeInstance().format(new Date());
+             //   time = DateFormat.getDateTimeInstance().format(new Date());
+                Calendar c = Calendar.getInstance();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmssZ");
+                time = sdf.format(c.getTime());
                 if(description.equalsIgnoreCase("")&& title.equalsIgnoreCase("")){
                     Toast.makeText(this,"Empty Note",Toast.LENGTH_SHORT).show();
                     return super.onOptionsItemSelected(item);

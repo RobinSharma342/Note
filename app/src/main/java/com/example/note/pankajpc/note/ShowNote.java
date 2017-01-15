@@ -18,6 +18,9 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import io.realm.Realm;
@@ -61,17 +64,22 @@ public class ShowNote extends AppCompatActivity {
         priority=getIntent().getIntExtra("priority",0);
         changedPriority=priority;
 
-        //String s = timestamp.substring(3,19);
-        //String s1 = s.replaceAll(":","").replaceAll(" ","").replaceAll(",","");
-       // int i=Integer.parseInt(timestamp.replaceAll("[\\D]", ""));
-       // Toast.makeText(this,""+s1,Toast.LENGTH_LONG).show();
 
 
         //get note from database based on what item user clicked
         nm = realm.where(NoteModel.class).equalTo("mNoteDateTime",timestamp).findFirst();
         mnoteTitle.setText(nm.getmNoteTitle());
         mNoteDescription.setText(nm.getmNoteDescription());
-        mTimeStamp.setText(nm.getmNoteDateTime());
+        SimpleDateFormat curFormater = new SimpleDateFormat("yyMMddHHmmssZ");
+        Date dateObj = null;
+        try {
+            dateObj = curFormater.parse(nm.getmNoteDateTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        SimpleDateFormat postFormater = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss");
+        String newDateStr = postFormater.format(dateObj);
+        mTimeStamp.setText(newDateStr);
         mEditButton.setOnClickListener(editButtonListener);
         mSaveButton.setOnClickListener(editButtonListener);
         mOptions.setOnClickListener(editButtonListener);
@@ -146,14 +154,16 @@ public class ShowNote extends AppCompatActivity {
         String time_temp = mTimeStamp.getText().toString();
 
         if(!(title_temp.equals(title)&& description_temp.equals(description) && priority==changedPriority)) {
-            NoteModel model1 = realm.where(NoteModel.class).equalTo("mNoteDateTime", time_temp).findFirst();
+            NoteModel model1 = realm.where(NoteModel.class).equalTo("mNoteDateTime", timestamp).findFirst();
             realm.beginTransaction();
             model1.deleteFromRealm();
             realm.commitTransaction();
             realm.close();
             Realm realm;
             realm = Realm.getDefaultInstance();
-            String time1 = DateFormat.getDateTimeInstance().format(new Date());
+            Calendar c = Calendar.getInstance();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmssZ");
+            String time1 = sdf.format(c.getTime());
             realm.beginTransaction();
             realm.copyToRealmOrUpdate(new NoteModel(time1, description_temp, title_temp,changedPriority));
             realm.commitTransaction();
