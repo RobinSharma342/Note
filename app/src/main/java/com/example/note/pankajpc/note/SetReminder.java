@@ -27,7 +27,7 @@ public class SetReminder extends AppCompatActivity implements DatePickerDialog.O
     TextView dateSelected,timeSelected;
     Spinner selectFrequency;
     Calendar calendar;
-    String frequencyType;
+    String frequencyType,finalDate,finalTime;
     String title,description,timestamp;
     int year,month,date,hourOfDay,minute,priority,requestCodeForDismiss;
     @Override
@@ -59,9 +59,15 @@ public class SetReminder extends AppCompatActivity implements DatePickerDialog.O
         dismissReminder.setVisibility(View.GONE);
         SharedPreferences sharedPreferences = getSharedPreferences("mypref",MODE_PRIVATE);
         requestCodeForDismiss = sharedPreferences.getInt(timestamp,0);
+        finalTime = sharedPreferences.getString(timestamp+"time","");
+        finalDate = sharedPreferences.getString(timestamp+"date","");
+
+
         if(requestCodeForDismiss>0)
         {
             dismissReminder.setVisibility(View.VISIBLE);
+            dateSelected.setText(finalDate);
+            timeSelected.setText(finalTime);
         }
 
 
@@ -134,6 +140,8 @@ public class SetReminder extends AppCompatActivity implements DatePickerDialog.O
                     SharedPreferences sharedPreferences = getSharedPreferences("mypref",MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putInt(timestamp,requestCode);
+                    editor.putString(timestamp+"date",finalDate);
+                    editor.putString(timestamp+"time",finalTime);
                     editor.apply();
                     finish();
                     break;
@@ -175,6 +183,7 @@ public class SetReminder extends AppCompatActivity implements DatePickerDialog.O
 
 
         dateSelected.setText(""+month+1+"/"+date+"/"+year);
+        finalDate = ""+month+1+"/"+date+"/"+year;
     }
 
     @Override
@@ -199,5 +208,6 @@ public class SetReminder extends AppCompatActivity implements DatePickerDialog.O
         }
 
         timeSelected.setText(""+hour+":"+min1+" "+amPm);
+        finalTime = ""+hour+":"+min1+" "+amPm;
     }
 }
