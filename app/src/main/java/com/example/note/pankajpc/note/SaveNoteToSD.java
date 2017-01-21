@@ -3,7 +3,6 @@ package com.example.note.pankajpc.note;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Environment;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
@@ -13,7 +12,6 @@ import java.io.IOException;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
-import io.realm.Sort;
 
 /**
  * Created by Pankaj PC on 01-19-2017.
