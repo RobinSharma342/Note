@@ -58,6 +58,7 @@ public class ShowNote extends AppCompatActivity {
         mShowNote.setBackgroundColor(Color.parseColor(SharedPreferenceCommon.getEditorBackground()));
 
 
+
         title=getIntent().getStringExtra("title");
         description=getIntent().getStringExtra("description");
         timestamp=getIntent().getStringExtra("timestamp");

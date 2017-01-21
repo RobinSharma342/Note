@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
@@ -27,6 +28,10 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -119,6 +124,9 @@ public class MainActivity extends AppCompatActivity {
                     case "Search":
                         mSearchView.onActionViewExpanded();
                         break;
+                    case "Save Notes To SD":
+                        new SaveNoteToSD(context1).execute();
+                        break;
                 }
 
 
@@ -132,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
         mDrawerItem.add(new DrawerItem("Notes",R.drawable.ic_notes));
         mDrawerItem.add(new DrawerItem("Add a Note",R.drawable.ic_add));
         mDrawerItem.add(new DrawerItem("Search",R.drawable.ic_search));
+        mDrawerItem.add(new DrawerItem("Save Notes To SD",R.drawable.ic_note_save));
         mDrawerItem.add(new DrawerItem("Settings",R.drawable.ic_settings));
     }
 
@@ -183,6 +192,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.priority:
                 mResults = mRealm.where(NoteModel.class).findAllSorted("mNotePriority",Sort.DESCENDING);
                 mNoteAdapter.update(mResults);
+                break;
+            case R.id.actionSave:
+                new SaveNoteToSD(this).execute();
                 break;
         }
 

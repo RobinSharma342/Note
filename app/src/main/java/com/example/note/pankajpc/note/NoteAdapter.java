@@ -2,12 +2,15 @@ package com.example.note.pankajpc.note;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Vibrator;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
+import android.text.Spannable;
+import android.text.Spanned;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -113,6 +116,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.mTitle.setText(mResults.get(position).getmNoteTitle());
+       // holder.mTitle.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         SimpleDateFormat curFormater = new SimpleDateFormat("yyMMddHHmmssZ");
         Date dateObj = null;
         try {
